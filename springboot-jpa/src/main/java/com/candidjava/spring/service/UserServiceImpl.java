@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.candidjava.spring.bean.User;
-import com.candidjava.spring.exception.RecordNotFoundException;
 import com.candidjava.spring.repository.UserRepository;
 
 @Service
@@ -25,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	public List<User> getUser() throws RecordNotFoundException {
+	public List<User> getUser() {
 
 		List<User> employeeList = (List<User>) userRepository.findAll();
 
@@ -36,49 +35,44 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	public User getUserfindById(long id) throws RecordNotFoundException {
+	public User getUserfindById(long id) {
 
 		Optional<User> user = userRepository.findById(id);
 
 		if (user.isPresent()) {
 			return user.get();
-		} else {
-			throw new RecordNotFoundException("No employee record exist for given id");
 		}
+		return null;
 	}
 
-	public User update(User user, long l) throws RecordNotFoundException {
+	public User update(User user, long l) {
 
 		Optional<User> employee = userRepository.findById(l);
 
 		if (employee.isPresent()) {
 			return userRepository.save(user);
-		} else {
-			throw new RecordNotFoundException("No employee record exist for given id");
 		}
+		return user;
 
 	}
 
-	public void deleteUserById(long id) throws RecordNotFoundException {
+	public void deleteUserById(long id) {
 
 		Optional<User> employee = userRepository.findById(id);
 
 		if (employee.isPresent()) {
 			userRepository.delete(id);
-		} else {
-			throw new RecordNotFoundException("No employee record exist for given id");
 		}
 	}
 
-	public User updatePartially(User user, long id) throws RecordNotFoundException {
+	public User updatePartially(User user, long id) {
 		Optional<User> employee = userRepository.findById(id);
 
 		if (employee.isPresent()) {
 			user.setCountry(user.getCountry());
 			return userRepository.save(user);
-		} else {
-			throw new RecordNotFoundException("No employee record exist for given id");
 		}
+		return user;
 	}
 
 }

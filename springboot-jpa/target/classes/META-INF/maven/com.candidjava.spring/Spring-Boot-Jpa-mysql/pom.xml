@@ -47,6 +47,20 @@
 			<artifactId>jackson-dataformat-xml</artifactId>
 			<version>2.9.10</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.testinfected.hamcrest-matchers/core-matchers -->
+		<dependency>
+			<groupId>org.testinfected.hamcrest-matchers</groupId>
+			<artifactId>core-matchers</artifactId>
+			<version>1.5</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

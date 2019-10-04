@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "error")
 public class CustomErrorResponse {
-	
+
 	public CustomErrorResponse(String message, List<String> details) {
 		super();
 		this.message = message;

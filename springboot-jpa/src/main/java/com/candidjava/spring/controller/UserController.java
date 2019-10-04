@@ -73,7 +73,7 @@ public class UserController {
 		UserHolder userHolder = new UserHolder();
 		List<User> user = userService.getUser();
 		if (user == null) {
-			throw new RecordNotFoundException("Users are not available in database ");
+			throw new RecordNotFoundException("Users are not available in database");
 		}
 		userHolder.setUser(userService.getUser());
 
@@ -81,12 +81,13 @@ public class UserController {
 
 	}
 
+	@SuppressWarnings("null")
 	@PutMapping(value = "/update", headers = "Accept=application/json")
 	public ResponseEntity<String> updateUser(@RequestBody User currentUser) {
 		LOGGER.info("sd");
 		User user = userService.getUserfindById(currentUser.getId());
 		if (user == null) {
-			throw new RecordNotFoundException("Invalid User id : " + user.getId());
+			throw new RecordNotFoundException("Invalid Userr id :" + user.getId());
 		}
 		userService.update(currentUser, currentUser.getId());
 		return new ResponseEntity<String>(HttpStatus.OK);
@@ -96,7 +97,7 @@ public class UserController {
 	public ResponseEntity<User> deleteUser(@PathVariable("id") long id) throws RecordNotFoundException {
 		User user = userService.getUserfindById(id);
 		if (user == null) {
-			throw new RecordNotFoundException("Invalid User id : " + user.getId());
+			throw new RecordNotFoundException("Invalid User id :" + user.getId());
 		}
 		userService.deleteUserById(id);
 		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
@@ -106,7 +107,7 @@ public class UserController {
 	public ResponseEntity<User> updateUserPartially(@PathVariable("id") long id, @RequestBody User currentUser) {
 		User user = userService.getUserfindById(id);
 		if (user == null) {
-			throw new RecordNotFoundException("Invalid User id : " + user.getId());
+			throw new RecordNotFoundException("Invalid User id :" + user.getId());
 		}
 		User usr = userService.updatePartially(currentUser, id);
 		return new ResponseEntity<User>(usr, HttpStatus.OK);
