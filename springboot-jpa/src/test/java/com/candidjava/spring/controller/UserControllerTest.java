@@ -224,7 +224,7 @@ public class UserControllerTest {
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/user/update").content(putBody)
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
-		MvcResult result = mockMvc.perform(requestBuilder).andExpect(status().is(200));
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse().getContentAsString());
 
